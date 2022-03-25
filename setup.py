@@ -21,7 +21,7 @@ setup(
     author_email=about['__author_email__'],
     url=about['__url__'],
     install_requires=[
-        'pylint>=2.8.0',
+        'pylint==2.11.1',
     ],
     python_requires=">=3.6",
     packages=['pylint_quotes'],
