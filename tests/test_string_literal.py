@@ -49,13 +49,14 @@ class TestStringLiteralStringQuoteChecker(StringQuoteCheckerTestCase):
             self.checker.process_tokens(tokenize_str(test_str))
 
     @set_config(string_quote='double')
+    TEST_TOKENS = tokenize_str("x = 'test' + 'test' + 'test'")
     def test_mixed_quote_string_literal_cfg_double(self):
 
-        test_str = '''x = "test" + 'test' + "test"'''
+        test_str = "x = 'testtesttest'"
 
         msg = Message(msg_id='invalid-string-quote', line=1, args=(Q_SING, Q_DOUB))
-        with self.assertAddsMessages(msg):
-            self.checker.process_tokens(tokenize_str(test_str))
+        with self.assertAddsMessages(self.msg):
+         self.checker.process_tokens(TEST_TOKENS)
 
     @set_config(string_quote='single')
     def test_mixed_quote_string_literal_cfg_single(self):
