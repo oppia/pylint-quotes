@@ -10,11 +10,15 @@ here = os.path.abspath(os.path.dirname(__file__))
 about = {}
 with open(os.path.join(here, 'pylint_quotes', '__version__.py'), 'r') as f:
     exec(f.read(), about)
+with open('README.md', 'r', encoding='utf-8') as fh:
+    long_description = fh.read()
 
 
 setup(
     name=about['__title__'],
     description=about['__description__'],
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     license=about['__license__'],
     version=about['__version__'],
     author=about['__author__'],
@@ -40,4 +44,10 @@ setup(
         'Topic :: Utilities'
     ),
     keywords='pylint linting string quotes',
+    project_urls={
+        'Documentation': 'https://pylint-quotes.readthedocs.io/en/latest/',
+        'Source': 'https://github.com/edaniszewski/pylint-quotes',
+        'Bug Reports': 'https://github.com/edaniszewski/pylint-quotes/issues',
+    },
+
 )
